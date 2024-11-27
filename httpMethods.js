@@ -11,6 +11,8 @@ let data = [
     { id: 2, name: 'Jane Doe' },
 ];
 
+let idCounter = data.length + 1;
+
 // GET: Retrieve all data
 app.get('/api/data', (req, res) => {
     res.json(data);
@@ -18,7 +20,7 @@ app.get('/api/data', (req, res) => {
 
 // POST: Add new data
 app.post('/api/data', (req, res) => {
-    const newData = { id: data.length + 1, name: req.body.name };
+    const newData = {id: idCounter++, name: req.body.name};
     data.push(newData);
     res.json(newData);
 });
